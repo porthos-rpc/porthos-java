@@ -1,0 +1,6 @@
+FROM maven:3.3.9-jdk-8-alpine
+RUN mkdir /app
+WORKDIR /app
+ADD pom.xml /app/
+RUN mvn verify clean --fail-never
+ADD . /app/

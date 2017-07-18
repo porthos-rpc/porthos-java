@@ -1,0 +1,17 @@
+version: '2'
+services:
+  lib:
+    build:
+      context: .
+      dockerfile: Dockerfile-app.devel
+    command: bash -c "mvn install"
+    links:
+     - broker
+    volumes:
+     - .:/app
+  broker:
+    image: rabbitmq:3.6-management
+    environment:
+      RABBITMQ_DEFAULT_VHOST: porthos
+    ports:
+     - "15672:15672"
