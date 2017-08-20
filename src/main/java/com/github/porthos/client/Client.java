@@ -113,7 +113,7 @@ public class Client implements Closeable {
                         try {
                             String contentType = properties.getContentType();
                             Map<String, Object> headers = properties.getHeaders();
-                            Integer statusCode = (Integer) headers.get("statusCode");
+                            Integer statusCode = (int) headers.get("statusCode");
 
                             logger.debug("Publishing the response to the future [correlationId: %s]", correlationId);
                             slot.getFuture().put(new Response(body, contentType, statusCode, headers));
