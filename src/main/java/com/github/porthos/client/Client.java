@@ -107,7 +107,7 @@ public class Client implements Closeable {
 			this.responseQueue = String.format("%s@%d-porthos-java", this.serviceName, System.currentTimeMillis());
 			this.channel = this.amqpConn.createChannel();
 
-			this.channel.queueDeclare(this.responseQueue, false, true, false, null);
+			this.channel.queueDeclare(this.responseQueue, false, true, true, null);
 
 			this.consumerTag = this.channel.basicConsume(this.responseQueue, new DefaultConsumer(channel) {
 				@Override
